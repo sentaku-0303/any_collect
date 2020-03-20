@@ -13,5 +13,6 @@ module AnyCollect
       g.javascript false
       g.helper false
       g.test_framework false
+    end
   end
 end
