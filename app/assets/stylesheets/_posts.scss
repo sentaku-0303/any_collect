@@ -1,0 +1,103 @@
+.main
+  .header {
+    // background-color: $back;
+    // background-image: url(images.jpeg);
+    height: 170px;
+    border-bottom: 5px solid $line1;
+
+    &__logo {
+      // float: left;
+      // width: 0;
+      // height: 0;
+      // margin: 0 auto;
+      // border: 20px solid blue;
+      // border-color: blue transparent;
+      // border-radius: 50%;
+      // animation: spin 1s linear infinite;
+      // display: block;
+    }
+    // @keyframes spin{
+    //   0%{
+    //     transform: rotate(0deg);
+    //   }
+    //   100%{
+    //     transform: rotate(360deg);
+    //   }
+    // }
+
+    
+    &__main {
+      width: calc(100% - 300px);
+    }
+  }
+
+  .contents {
+    // background-image: url(images.jpeg);
+    height: calc(100vh - 170px);
+    padding-top: 30px;
+
+    &__btn {
+      height: 70px;
+      width: 150px;
+      line-height: 40px;
+      margin-bottom: 30px;
+      background-color: $back1;
+      text-align: center;
+      display: block;
+      transform: rotate(-30deg);
+      border-radius: 40px;
+      border-color: $line1;
+      border-width: 5px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      position: relative;
+      transition: .4s;
+      
+      &--icon {
+        font-size: 20px;
+        color: $icon;
+        background-color: $back2;
+      }
+      
+      &--Google {
+        font-size: 20px;
+        color: $font;
+      }
+
+    }
+
+    .contents__btn:hover {
+      border: 10px solid transparent;
+      color: $line2;
+    }
+    
+    .contents__btn:before, .contents__btn:after {
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      box-sizing: border-box;
+      transform: scale(0);
+      transition: .2s;
+    }
+    
+    .contents__btn:before {
+      border-bottom: 3px solid $line2;
+      border-left: 3px solid $line2;
+      transform-origin: 100% 0%;
+    }
+    
+    .contents__btn:after {
+      border-top: 3px solid $line2;
+      border-right: 3px solid $line2;
+      transform-origin: 0% 100%;
+    }
+    
+    .contents__btn:hover:after,
+    .contents__btn:hover:before {
+      transform: scale(1);
+    }
+  }
