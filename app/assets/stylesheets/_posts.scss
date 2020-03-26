@@ -1,103 +1,630 @@
-.main
+.wrapper
   .header {
-    // background-color: $back;
-    // background-image: url(images.jpeg);
-    height: 170px;
-    border-bottom: 5px solid $line1;
+    height: 50px;
+    display: flex;
+    &__left {
 
-    &__logo {
-      // float: left;
-      // width: 0;
-      // height: 0;
-      // margin: 0 auto;
-      // border: 20px solid blue;
-      // border-color: blue transparent;
-      // border-radius: 50%;
-      // animation: spin 1s linear infinite;
-      // display: block;
     }
-    // @keyframes spin{
-    //   0%{
-    //     transform: rotate(0deg);
-    //   }
-    //   100%{
-    //     transform: rotate(360deg);
-    //   }
-    // }
+    &__right {
+      
+    }
 
-    
-    &__main {
-      width: calc(100% - 300px);
-    }
   }
 
-  .contents {
-    // background-image: url(images.jpeg);
-    height: calc(100vh - 170px);
-    padding-top: 30px;
-
-    &__btn {
-      height: 70px;
-      width: 150px;
-      line-height: 40px;
-      margin-bottom: 30px;
-      background-color: $back1;
-      text-align: center;
-      display: block;
-      transform: rotate(-30deg);
-      border-radius: 40px;
-      border-color: $line1;
-      border-width: 5px;
-      padding-top: 5px;
-      padding-bottom: 5px;
-      position: relative;
-      transition: .4s;
-      
+  .main_btn {
+    text-align: center;
+    background-color: lightseagreen;
+    color: black;
+    border: 10px double whitesmoke;
+    overflow: hidden;
+    position: absolute;
+    position: fixed;
+    z-index: 1;
+    bottom: 20px;
+    right: 20px;
+    height: 130px;
+    width: 130px;
+    border-radius: 100px;
+    &__content {
+      &--text {
+        font-weight: bold;
+        color: black;
+        font-size: 18px;
+        padding: 20px 0;
+      }
       &--icon {
-        font-size: 20px;
-        color: $icon;
-        background-color: $back2;
+        height: 60px;
+        width: 60px;
+        margin: auto;
+        display: block;
       }
-      
-      &--Google {
-        font-size: 20px;
-        color: $font;
-      }
-
-    }
-
-    .contents__btn:hover {
-      border: 10px solid transparent;
-      color: $line2;
-    }
-    
-    .contents__btn:before, .contents__btn:after {
-      width: 100%;
-      height: 100%;
-      z-index: 3;
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      box-sizing: border-box;
-      transform: scale(0);
-      transition: .2s;
-    }
-    
-    .contents__btn:before {
-      border-bottom: 3px solid $line2;
-      border-left: 3px solid $line2;
-      transform-origin: 100% 0%;
-    }
-    
-    .contents__btn:after {
-      border-top: 3px solid $line2;
-      border-right: 3px solid $line2;
-      transform-origin: 0% 100%;
-    }
-    
-    .contents__btn:hover:after,
-    .contents__btn:hover:before {
-      transform: scale(1);
     }
   }
+  .main_btn:after {
+    width: 100%;
+    height: 0;
+    content:"";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background : #FFF;
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    transition: .2s;
+    z-index: -1;
+  }
+  .main_btn:hover {
+    color: white;
+  }
+  .main_btn:hover:after {
+    height: 240%;
+    opacity: 1;
+  }
+  .main_btn:active:after {
+    height: 340%;
+    opacity: 1;
+  }
+
+
+
+  // .contents {
+  //   width: 100%;
+  //   height: 3000px;
+  //   background-image: url(images5.jpeg);
+  //   background-size: contain;
+  // }
+
+/* --- 背景が上下左右に動くのBOX定義 ------------------------ */
+.box {
+  position   : relative;
+  width: 100%;
+  // max-width  : 500px;                   /* 背景の大きさに変更 */
+  height     : 2000px;
+  margin     : auto;
+  // background : #ffffff;
+}
+
+/* --- 背景が上下左右に動くの背景定義 ----------------------- */
+.box::before {
+  display    : block;
+  content    : "";
+  position   : absolute;
+  top        : 0;
+  right      : 0;
+  bottom     : 0;
+  left       : 0;
+  background-size: contain;
+  background-image : url(image13.jpg);  /* 使用する画像を指定 */
+  animation  : bgAnime 15s linear infinite;
+}
+@keyframes bgAnime {
+   0% { background-position: 0 0 }
+                /* 使用する画像幅と画像高さのpxに変更ください */
+ 100% { background-position: 500px -332px }
+}
+
+/* --- 前面の文字定義（サンプルのため変更してください） ----- */
+.boxString{
+  position   : absolute;
+  display    : inline-block;
+  padding    : 20px;
+  background : rgba(0, 127, 255, 0.7);          /* 半透明の青 */
+  color      : #fff;
+  top        : 50%;                               /* 中央寄せ */
+  left       : 50%;
+  transform  : translate(-50%,-50%);
+}
+
+
+
+
+
+
+
+
+.footer {
+  width: 700px;
+  margin: 80px auto;
+  background-color: whitesmoke;
+  border: double 5px #4ec4d3;
+  text-align: center;
+
+  .information-mail {
+    .mail-top {
+      margin: 70px;
+      .mail-top-address {
+        font-weight: bold;
+        font-size: 20px;
+      }
+      .mail-top-label {
+        background-color: $red;
+        height: 1px;
+        &__text {
+          color: $white;
+          font-size: 12px;
+        }
+      }
+      .mail-top-bottom {
+        padding-top: 40px;
+        .mail-form {
+          height: 50px;
+          width: 400px;
+          border-radius: 4px;
+          border: 1px solid #CCCCCC;
+          margin: auto;
+          padding-left: 10px;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+  
+  .information-name {
+    .name-top {
+      margin: 70px;
+      .name-top-address {
+        font-weight: bold;
+        font-size: 20px;
+      }
+      .name-top-label {
+        background-color: $red;
+        height: 1px;
+        &__text {
+          color: $white;
+          font-size: 12px;
+        }
+      }
+    }
+    .name-top-bottom {
+      margin-top: 20px;
+      .name-form-left {
+        height: 50px;
+        width: 160px;
+        border-radius: 2px;
+        border: 1px solid #CCCCCC;
+        padding-left: 10px;
+        font-size: 15px;
+      }
+      .name-form-right {
+        height: 50px;
+        width: 160px;
+        border-radius: 2px;
+        border: 1px solid #CCCCCC;
+        margin-left: 10px;
+        padding-left: 10px;
+        font-size: 15px;
+      }
+    }
+  }
+
+  .information-kana {
+    .kana-top {
+      margin: 70px;
+      .kana-top-address {
+        font-weight: bold;
+        font-size: 20px;
+      }
+      .kana-top-label {
+        height: 1px;
+        background-color: $red;
+        &__text {
+          color: $white;
+          font-size: 12px;
+        }
+      }
+    }
+    .kana-top-bottom {
+      margin-top: 20px;
+      .kana-form-left {
+        height: 50px;
+        width: 160px;
+        border-radius: 2px;
+        border: 1px solid #CCCCCC;
+        padding-left: 10px;
+        font-size: 15px;
+      }
+      .kana-form-right {
+        height: 50px;
+        width: 160px;
+        border-radius: 2px;
+        border: 1px solid #CCCCCC;
+        margin-left: 10px;
+        padding-left: 10px;
+        font-size: 15px;
+      }
+    }
+  }
+
+  .information-birthday {
+    .birthday-top {
+      margin: 70px;
+      .birthday-top-address {
+        font-weight: bold;
+        font-size: 20px;
+      }
+      .birthday-top-label {
+        height: 1px;
+        background-color: $red;
+        &__text {
+          color: $white;
+          font-size: 12px;
+        }
+      }
+    }
+    .birthday-top-bottom {
+      margin: 40px;
+      display: flex;
+      padding-left: 20px;
+      .birthday-top-bottom-year {
+        select{
+          height: 30px;
+          width: 80px;
+          background-color: white;
+          font-size: 15px;
+          padding-left: 15px;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          border: 1px solid #b4b3b3;
+          border-radius: 2px;
+        }
+        select::-ms-expand {
+          display: none;
+        }
+      }
+      .birthday-top-bottom-month {
+        select{
+          height: 30px;
+          width: 50px;
+          background-color: white;
+          font-size: 15px;
+          padding-left: 15px;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          border: 1px solid #b4b3b3;
+          border-radius: 2px;
+        }
+        select::-ms-expand {
+          display: none;
+        }
+      }
+      .birthday-top-bottom-day {
+        select{
+          height: 30px;
+          width: 50px;
+          background-color: white;
+          font-size: 15px;
+          padding-left: 15px;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          border: 1px solid #b4b3b3;
+          border-radius: 2px;
+        }
+        select::-ms-expand {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .information-zip-code {
+    .zip-code-top {
+      margin: 70px;
+      .zip-code-top-address {
+        font-weight: bold;
+        font-size: 20px;
+      }
+      .zip-code-top-label {
+        background-color: $red;
+        height: 1px;
+        &__text {
+          color: $white;
+          font-size: 12px;
+        }
+      }
+    }
+    .zip-code-top-bottom {
+      margin-top: 20px;
+      .zip-code-form {
+        height: 40px;
+        width: 150px;
+        border-radius: 4px;
+        border: 1px solid #CCCCCC;
+        padding-left: 20px;
+        font-size: 15px;
+      }
+    }
+  }
+
+  .information-state {
+    .state-top {
+      margin: 70px 70px 20px;
+      .state-top-address {
+        font-weight: bold;
+        font-size: 20px;
+      }
+      .state-top-label {
+        background-color: $red;
+        height: 1px;
+        &__text {
+          color: $white;
+          font-size: 12px;
+        }
+      }
+    }
+    select{
+      height: 50px;
+      width: 300px;
+      background-color: white;
+      font-size: 15px;
+      padding-left: 15px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      position: relative;
+      border: 1px solid #b4b3b3;
+      border-radius: 2px;
+    }
+    select::-ms-expand {
+      display: none;
+    }
+  } 
+
+  .information-municipalities {
+    .municipalities-top {
+      margin: 70px;
+      .municipalities-top-address {
+        font-weight: bold;
+        font-size: 20px;
+      }
+      .municipalities-top-label {
+        background-color: $red;
+        height: 1px;
+        &__text {
+          color: $white;
+          font-size: 12px;
+        }
+      }
+    }
+    .municipalities-top-bottom {
+      margin-top: 20px;
+      .municipalities-form {
+        height: 50px;
+        width: 350px;
+        border-radius: 2px;
+        border: 1px solid #CCCCCC;
+        padding-left: 10px;
+        font-size: 15px;
+      }
+    }
+  }
+
+  .information-street-number {
+    .street-number-top {
+      margin: 70px;
+      .street-number-top-address {
+        font-weight: bold;
+        font-size: 20px;
+      }
+      .street-number-top-label {
+        background-color: $red;
+        height: 1px;
+        &__text {
+          color: $white;
+          font-size: 12px;
+          padding-top: 3px;
+          padding-right: 1px;
+        }
+      }
+    }
+
+    .street-number-top-bottom {
+      margin-top: 20px;
+      .street-number-form {
+        height: 50px;
+        width: 350px;
+        border-radius: 4px;
+        border: 1px solid #CCCCCC;
+        padding-left: 10px;
+        font-size: 15px;
+      }
+    }
+  }
+
+  .information-phone {
+    .phone-top {
+      margin: 70px;
+      .phone-top-address {
+        font-weight: bold;
+        font-size: 20px;
+      }
+      .phone-top-label {
+        background-color: $red;
+        height: 1px;
+        &__text {
+          color: $white;
+          font-size: 12px;
+          padding-top: 3px;
+          padding-right: 1px;
+        }
+      }
+    }
+    .phone-top-bottom {
+      margin-top: 40px;
+      .phone-form { 
+        height: 50px;
+        width: 350px;
+        border-radius: 4px;
+        border: 1px solid #CCCCCC;
+        padding-left: 10px;
+        font-size: 15px;
+      }
+    }
+  }
+  .send {
+    padding-top: 30px;
+    height: 150px;
+    .btn {
+      display: inline-block;           /* 改行なしのブロック要素 */
+      position: relative;              /* 相対位置指定 */
+      width: 300px;                    /* 横幅 */
+      height: 70px;                    /* 高さ */
+      text-align: center;              /* 水平方向は中央揃え */
+      line-height: 70px;               /* 行の高さ */
+      font-size: 20px;
+    }
+    .btn span {
+      display: block;                  /* ブロック要素 */
+      position: absolute;              /* 親要素の左上を基準位置 */
+      width: 100%;                     /* 横幅 */
+      height: 100%;                    /* 高さ */
+      border: double 5px ;          /* 罫線 */
+      transform-style: preserve-3d;    /* 重なりを3Dで表示 */
+      transition: 0.5s;   /* 変化時間 */
+    }
+    .btn span:nth-child(1) {
+      background-color: $red;   /* Buttonボタンの色 */
+      color: white;          /* Buttonの文字の色 */
+      transform: rotateX(0deg);        /* 横軸の回転なし */
+      transform-origin: 0 50%  -30px;  /* transformの起点 */
+    }
+    .btn span:nth-child(2) {
+      background-color: lightseagreen;   /* Clickボタンの色 */
+      color: #ffffff;          /* Clickの文字の色 */
+      transform: rotateX(90deg);       /* 横軸で90度回転 */
+      transform-origin: 0 50%  -30px;  /* transformの起点 */
+    }
+    .btn:hover span:nth-child(1) {
+      transform: rotateX(-90deg);      /* 横軸で前方に90度回転 */
+    }
+    .btn:hover span:nth-child(2) {
+      transform: rotateX(0deg);        /* 横軸の回転なし */
+    }
+  }
+
+}
+  
+          
+  
+          
+  
+          
+  
+        
+    
+        
+  
+          
+          
+  
+ 
+
+
+
+
+
+// .main
+//   .header {
+//     // background-color: $back;
+//     // background-image: url(images.jpeg);
+//     height: 170px;
+//     border-bottom: 5px solid $line1;
+
+//     &__logo {
+//       // float: left;
+//       // width: 0;
+//       // height: 0;
+//       // margin: 0 auto;
+//       // border: 20px solid blue;
+//       // border-color: blue transparent;
+//       // border-radius: 50%;
+//       // animation: spin 1s linear infinite;
+//       // display: block;
+//     }
+//     // @keyframes spin{
+//     //   0%{
+//     //     transform: rotate(0deg);
+//     //   }
+//     //   100%{
+//     //     transform: rotate(360deg);
+//     //   }
+//     // }
+
+    
+//     &__main {
+//       width: calc(100% - 300px);
+//     }
+//   }
+
+//   .contents {
+//     // background-image: url(images.jpeg);
+//     height: calc(100vh - 170px);
+//     padding-top: 30px;
+
+//     &__btn {
+//       height: 70px;
+//       width: 150px;
+//       line-height: 40px;
+//       margin-bottom: 30px;
+//       background-color: $back1;
+//       text-align: center;
+//       display: block;
+//       transform: rotate(-30deg);
+//       border-radius: 40px;
+//       border-color: $line1;
+//       border-width: 5px;
+//       padding-top: 5px;
+//       padding-bottom: 5px;
+//       position: relative;
+//       transition: .4s;
+      
+//       &--icon {
+//         font-size: 20px;
+//         color: $icon;
+//         background-color: $back2;
+//       }
+      
+//       &--Google {
+//         font-size: 20px;
+//         color: $font;
+//       }
+
+//     }
+
+//     .contents__btn:hover {
+//       border: 10px solid transparent;
+//       color: $line2;
+//     }
+    
+//     .contents__btn:before, .contents__btn:after {
+//       width: 100%;
+//       height: 100%;
+//       z-index: 3;
+//       content: "";
+//       position: absolute;
+//       top: 0;
+//       left: 0;
+//       box-sizing: border-box;
+//       transform: scale(0);
+//       transition: .2s;
+//     }
+    
+//     .contents__btn:before {
+//       border-bottom: 3px solid $line2;
+//       border-left: 3px solid $line2;
+//       transform-origin: 100% 0%;
+//     }
+    
+//     .contents__btn:after {
+//       border-top: 3px solid $line2;
+//       border-right: 3px solid $line2;
+//       transform-origin: 0% 100%;
+//     }
+    
+//     .contents__btn:hover:after,
+//     .contents__btn:hover:before {
+//       transform: scale(1);
+//     }
+//   }
