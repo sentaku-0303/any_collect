@@ -1,35 +1,160 @@
-.main
+.wrapper
   .header
-    .header__logo
+    .header__left
+    トップページ
 
-    .header__main 
+    .header__right
+    = link_to "https://www.google.com/", class: "header__right__btn header__right__btn--Google" do
+      = icon("fas", "fas fa-dragon", class: "header__right__btn--icon")
+      Google
+    = link_to "https://www.google.com/", class: "header__right__btn header__right__btn--Google" do
+      = icon("fas", "fas fa-dragon", class: "header__right__btn--icon")
+      Google
+  
 
-  .contents
-    .contents__left
-      = link_to "https://www.google.com/", class: "contents__btn contents__btn--Google" do
-        = icon("fas", "fas fa-dragon", class: "contents__btn--icon")
-        着物
-      = link_to "https://www.google.com/", class: "contents__btn contents__btn--Google" do
-        = icon("fas", "fas fa-dragon", class: "contents__btn--icon")
-        時計
-      = link_to "https://www.google.com/", class: "contents__btn contents__btn--Google" do
-        = icon("fas", "fas fa-dragon", class: "contents__btn--icon")
-        雑貨
-      = link_to "https://www.google.com/", class: "contents__btn contents__btn--Google" do
-        = icon("fas", "fas fa-dragon", class: "contents__btn--icon")
-        家電
-      = link_to "https://www.google.com/", class: "contents__btn contents__btn--Google" do
-        = icon("fas", "fas fa-dragon", class: "contents__btn--icon")
-        アクセサリー
-      = link_to "https://www.google.com/", class: "contents__btn contents__btn--Google" do
-        = icon("fas", "fas fa-dragon", class: "contents__btn--icon")
-        ウイスキー 
-      = link_to "https://www.google.com/", class: "contents__btn contents__btn--Google" do
-        = icon("fas", "fas fa-dragon", class: "contents__btn--icon")
-        焼酎
-      = link_to "https://www.google.com/", class: "contents__btn contents__btn--Google" do
-        = icon("fas", "fas fa-dragon", class: "contents__btn--icon")
-        Google
+  .main_btn
+    = link_to "#", class: "header__right__btn header__right__btn--Google" do
+      .main_btn__content
+        .main_btn__content--text
+          お問合せ
+        = image_tag "icon_tel.jpg", class:"main_btn__content--icon"
 
-    .contents__right
-      .contents__right__title
+
+
+
+  -# .contents
+  .box
+    .boxString 背景がスクロール
+ 
+
+
+
+
+  .footer
+    .information-mail
+      .mail-top
+        .mail-top-address
+          メールアドレス (mail address)
+        .mail-top-label
+          .mail-top-label__text
+        .mail-top-bottom
+          %input{placeholder: "abc@sample.com", class: "mail-form"}
+      .information-name
+        .name-top
+          .name-top-address
+            お名前 (name)
+          .name-top-label
+            .name-top-label__text
+          .name-top-bottom
+            %input{placeholder: "例）田中 (last name)", class: "name-form-left"}
+            %input{placeholder: "例）太郎 (first name)", class: "name-form-right"}
+      .information-kana
+        .kana-top
+          .kana-top-address
+            お名前 (kana)
+          .kana-top-label
+            .kana-top-label__text
+          .kana-top-bottom
+            %input{placeholder: "例）タナカ", class: "kana-form-left"}
+            %input{placeholder: "例）タロウ", class: "kana-form-right"}
+      .information-birthday
+        .birthday-top
+          .birthday-top-address
+            生年月日 (Birthday)
+          .birthday-top-label
+            .birthday-top-label__text
+          .birthday-top-bottom
+            .birthday-top-bottom-year
+              = collection_select :year, :birthday_year_id, Year.all, :id, :year
+            .birthday-top-bottom-month
+              年 (year)
+              = collection_select :month, :birthday_month_id, Month.all, :id, :month
+            .birthday-top-bottom-day
+              月 (month)
+              = collection_select :day, :birthday_day_id, Day.all, :id, :day
+              日 (day)
+      .information-zip-code
+        .zip-code-top
+          .zip-code-top-address
+            郵便番号 (Postal code)
+          .zip-code-top-label
+            .zip-code-top-label__text
+          .zip-code-top-bottom
+            %input{placeholder: "例）123-4567", class: "zip-code-form"} 
+      .information-state
+        .state-top
+          .state-top-address
+            都道府県 (Prefectures)
+          .state-top-label
+            .state-top-label__text
+        .state-bottom
+          = collection_select :address, :prefecture_id, Prefecture.all, :id, :name
+      .information-municipalities
+        .municipalities-top
+          .municipalities-top-address
+            市町村区 (Municipal District)
+          .municipalities-top-label
+            .municipalities-top-label__text
+          .municipalities-top-bottom
+            %input{placeholder: "例）中央区日本橋", class: "municipalities-form"} 
+      .information-street-number
+        .street-number-top
+          .street-number-top-address
+            番地・建物・部屋番号 (address,building,room number)
+          .street-number-top-label
+            .street-number-top-label__text
+          .street-number-top-bottom
+            %input{placeholder: "例）1番地1丁目1号日本中央ビル101F-101号室", class: "street-number-form"} 
+      .information-phone
+        .phone-top
+          .phone-top-address
+            電話番号 (phone number)
+          .phone-top-label
+            .phone-top-label__text
+          .phone-top-bottom
+            %input{placeholder: "例）090-1234-5678", class: "phone-form"} 
+      .send
+        %a.btn{:href => "#"}
+          %span 入力お疲れ様でした！
+          %span 問合せる
+
+
+
+
+
+
+-# .main
+-#   .header
+-#     .header__logo
+
+-#     .header__main 
+
+-#   .contents
+-#     .contents__left
+-#       = link_to "https://www.google.com/", class: "contents__btn contents__btn--Google" do
+-#         = icon("fas", "fas fa-dragon", class: "contents__btn--icon")
+-#         着物
+-#       = link_to "https://www.google.com/", class: "contents__btn contents__btn--Google" do
+-#         = icon("fas", "fas fa-dragon", class: "contents__btn--icon")
+-#         時計
+-#       = link_to "https://www.google.com/", class: "contents__btn contents__btn--Google" do
+-#         = icon("fas", "fas fa-dragon", class: "contents__btn--icon")
+-#         雑貨
+-#       = link_to "https://www.google.com/", class: "contents__btn contents__btn--Google" do
+-#         = icon("fas", "fas fa-dragon", class: "contents__btn--icon")
+-#         家電
+-#       = link_to "https://www.google.com/", class: "contents__btn contents__btn--Google" do
+-#         = icon("fas", "fas fa-dragon", class: "contents__btn--icon")
+-#         アクセサリー
+-#       = link_to "https://www.google.com/", class: "contents__btn contents__btn--Google" do
+-#         = icon("fas", "fas fa-dragon", class: "contents__btn--icon")
+-#         ウイスキー 
+-#       = link_to "https://www.google.com/", class: "contents__btn contents__btn--Google" do
+-#         = icon("fas", "fas fa-dragon", class: "contents__btn--icon")
+-#         焼酎
+-#       = link_to "https://www.google.com/", class: "contents__btn contents__btn--Google" do
+-#         = icon("fas", "fas fa-dragon", class: "contents__btn--icon")
+-#         Google
+
+-#     .contents__right
+-#       .contents__right__title
